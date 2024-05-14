@@ -56,7 +56,6 @@ const selectedOSSelect = ref([]);
       <option value="2">Windows</option>
       <option value="3">Linux</option>
       <option value="4">iOS</option>
-      <option value="5">Andoroid</option>
     </select>
     <p>選択されたOS: {{ selectedOSSelect }}</p>
   </section>
