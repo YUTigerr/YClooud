@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
-const number = ref(80);
-const showOrNot = computed((): boolean => {
-    let showOrNot = false;
-    const rand = Math.round(Math.random() * 100);
-    if(rand>=50){
-        showOrNot = true;
-    }
-    return showOrNot;
-});
+import { ref } from "vue";
+
+const cooktailListInit: { [key: number]: string } = {
+  2345: "ホワイトレディ",
+  4412: "ブルーハワイ",
+  6792: "ニューヨーク",
+};
+const cooktailList = ref(cooktailListInit);
 </script>
 <template>
-    <p v-if="number >= 50">条件に合致したので表示1</p>
-    <p v-if="Math.round(Math.random()*100) >= 50">条件に合致したので表示2</p>
-    <p v-if="showOrNot">条件に合致したので表示3</p>
+  <ul>
+    <li v-for="(cooktailName, id) in cooktailList" :key="'cooktailList' + id">
+      IDが{{ id }}のカクテルは{{ cooktailName }}
+    </li>
+  </ul>
+  <ul>
+    <li
+      v-for="(cooktailName, id, index) in cooktailList"
+      :key="'cooktailListWithIdx' + id"
+    >
+      {{ index + 1 }}: IDが{{ id }} のカクテルは{{ cooktailName }}
+    </li>
+  </ul>
 </template>
